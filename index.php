@@ -51,7 +51,7 @@ $content = json_decode(file_get_contents("https://api.github.com/search/reposito
         </a>
         <ul class="navbar-nav">
             <ul class="nav-item">
-                <a href="https://github.com/joelsonRamos" class="nav-link">Joelson Ferreira</a>
+                <a href="https://github.com/joelsonRamos/AppGitList" class="nav-link">Joelson Ferreira</a>
             </ul>
         </ul>
     </nav>
