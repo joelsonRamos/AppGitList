@@ -7,13 +7,14 @@ $opts = [
     ]
 ];
 
+$pagina  = $_POST['pagina'];
 
 $linguagem  = $_POST['linguagem'];
 if($linguagem ==""){
     $linguagem = 'PHP';
 }
 $context = stream_context_create($opts);
-$content = json_decode(file_get_contents("https://api.github.com/search/repositories?q=language:".$linguagem."&sort=stars&page=1", false, $context));
+$content = json_decode(file_get_contents("https://api.github.com/search/repositories?q=language:".$linguagem."&sort=stars&page=$pagina", false, $context));
 
 ?>
 
@@ -140,19 +141,20 @@ $content = json_decode(file_get_contents("https://api.github.com/search/reposito
 
             </div>
 
-            <nav class="mt-4" aria-label="Navegação de página">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#">Próximo</a>
-                    </li>
-                </ul>
-            </nav>
+
+            <form method="post">
+            <p>
+                <select name="pagina">
+                    <?php for ($i=1; $i <= 34; $i++) { ?>
+
+                    <option value="<?=$i?>"><?=$i?></option>
+
+                    <?php }?>
+                
+                </select>
+                <input type="submit" value="ir" />
+            </p>
+        </form>
 
 
         </div>
